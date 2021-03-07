@@ -6,9 +6,9 @@ def int_reverse(arg):
         str_arg = str(arg)
         sign = 1 if arg >=0 else -1
 
-        re_str_arg = str_arg[::-1] if arg >=0 else str_arg[1::1][::-1]
+        re_str_arg = str_arg[::-1] if arg >=0 else str_arg[:0:-1]
         return sign * int(re_str_arg)
     else:
         print("type error not a int")
 
-print(int_reverse(12.20))
+print(int_reverse(-12000))
