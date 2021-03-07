@@ -1,6 +1,5 @@
-list1 = []
 def two_sum(nums, target):
-    dict1 = {}
+    list1,dict1 = [],{}
     for i in range(len(nums)):
         if target-nums[i] in dict1:
             list1.append([dict1[target-nums[i]], i])
