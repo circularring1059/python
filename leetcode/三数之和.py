@@ -19,3 +19,6 @@ def threeSum(nums):
     return res
 
 print(threeSum([0,-2,2,-3,7,3,5]))
+
+#[0,0,0] 没出来
+print(threeSum([0,0,0,1,-1]))
