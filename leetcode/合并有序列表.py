@@ -13,6 +13,7 @@ def mergeList(nums1, nums2):
     return nums1
 
 print(mergeList([1,3,3,5], [1,4,4,9]))
+
 def mergeList1(nums1, nums2):
     nums1_pointer, nums2_pointer = 0, 0
     nums3 = []
