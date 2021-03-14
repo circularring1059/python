@@ -1,6 +1,6 @@
 def longestCommonPrefix(nums):
     if not nums:
-        return "不存在"
+        return " "
 
     mins = min(nums)
     maxs = max(nums)
@@ -9,4 +9,4 @@ def longestCommonPrefix(nums):
             return mins[:i]
     return mins
 
-print(longestCommonPrefix(["abc", "cd"]))
+print(longestCommonPrefix(["abc", "a", "c"]))
