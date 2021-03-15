@@ -10,3 +10,6 @@ def longestCommonPrefix(nums):
     return mins
 
 print(longestCommonPrefix(["abc", "a", "c"]))
+
+
+
