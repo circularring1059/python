@@ -12,6 +12,20 @@ class Person:
         print(self.__name)
         print(self.__cl)
 
+    # #内部方法修改 age
+    # def setAge(self, age):
+    #     self.__age = age
+    # #内部方法得到 age
+    # def getAge(self):
+    #     print(self.__age)
+
+    #装饰器
+    @property
+    def age(self):
+        print(self.__age)
+    @age.setter
+    def age(self, age):
+        self.__age = age
 
 person = Person("circularring1010", 26)
 
@@ -41,3 +55,9 @@ person.getName() # 注意这里__cl=class  而不personClass
 
 print(dir(Person)) #获取类的属性
 print(dir(person)) #获取对象的属性  私有属性可以通过_class__** 访问
+
+# person.setAge(17)
+# person.getAge()
+
+person.age = 17
+person.age
