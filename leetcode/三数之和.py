@@ -9,7 +9,7 @@ def threeSum(nums):
         res.append([0,0,0])
 
     for i in range(len(nums)-2):
-        if i  > 0 and nums[i] == nums[i+1]:
+        if i > 0 and nums[i] == nums[i+1]:
             continue
         target = -1 * nums[i]
         j,k = i+1, left-1
