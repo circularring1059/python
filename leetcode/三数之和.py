@@ -1,10 +1,11 @@
-from collections import Counter
+# from collections import Counter
 
 
 def threeSum(nums):
     nums.sort()
     left, res = len(nums), []
-    if 0 in Counter(nums) and Counter(nums).get(0) >= 3:
+    # if 0 in Counter(nums) and Counter(nums).get(0) >= 3:
+    if nums.count(0) >= 3:
         res.append([0,0,0])
 
     for i in range(len(nums)-2):
@@ -26,5 +27,5 @@ def threeSum(nums):
 
 print(threeSum([0,-2,2,-3,7,3,5]))
 
-#增加[0, 0, 0]
+#增加[0, 0, 0]可能
 print(threeSum([0,0,0,1,-1]))

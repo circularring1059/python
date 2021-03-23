@@ -5,10 +5,10 @@
 class Sutent:
     def __init__(self, name, book):
         self.name = name
-        # self.book = []
-        # self.book.append(book)
-        self.book = [str(book)]
-        self.book = book
+        self.book = []
+        self.book.append(book)
+        # self.book = [str(book)]
+        # self.book = book
 
     def showMybook(self):
         return self.book
