@@ -11,4 +11,4 @@ def strStr(haystak, needle):
     else:
         return -1
 
-print(strStr("circularring1010","ing"))
+print(strStr("circularring1010", "ing"))
