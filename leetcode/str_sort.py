@@ -9,11 +9,11 @@ def com_str(str1, str2):
         else:
             i += 1
 
-    if len(str1) == i:
-        return True
-    else:
-        return False
-
+    # if len(str1) == i:
+    #     return True
+    # else:
+    #     return False
+    return True if len(str1) == i else False
 
 #  这里用冒泡排序，快排，选排也一样的
 def str_sort(array):
@@ -23,3 +23,5 @@ def str_sort(array):
                 # 逆序
                 array[j], array[j + 1] = array[j + 1], array[j]
     return array
+
+print(str_sort(["a", "b", "fg"]))
