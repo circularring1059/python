@@ -26,3 +26,15 @@ def com_str(str1, str2):
 
 
 print(com_str("cc", "vv"))
+
+class Person:
+    def __init__(self,tall):
+        self.__tall = tall
+
+person = Person(169)
+
+person.__tall = 168
+
+print(dir(person))
+print(person.__tall)
+print(person._Person__tall)
