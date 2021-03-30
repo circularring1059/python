@@ -8,13 +8,13 @@ def solution(intervals):
     res = []
     start, end  = intervals[0][0], intervals[0][1]
     for i in range(len(intervals)):
-        s, e = intervals[i][0], intervals[i][1]
+        left_pointer, right_pointer = intervals[i][0], intervals[i][1]
 
-        if s <= end:
-            end =max(end, e)
+        if left_pointer <= end:
+            end = max(end, right_pointer)
         else:
             res.append([start, end])
-            start, end = s, e
+            start, end = left_pointer, right_pointer
 
     res.append([start, end])
     return res
