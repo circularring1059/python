@@ -4,6 +4,7 @@ def solution(intervals):
         return intervals
 
     intervals = sorted(intervals, key = lambda x:x[0])
+    print(intervals)
     res = []
     start, end  = intervals[0][0], intervals[0][1]
     for i in range(len(intervals)):
@@ -14,9 +15,10 @@ def solution(intervals):
         else:
             res.append([start, end])
             start, end = s, e
+
     res.append([start, end])
     return res
 
 
 
-print(solution([[1,3],[2,6],[8,10],[15,18]]))
+print(solution([[15,18],[1,3],[2,6],[8,10]]))
