@@ -20,4 +20,4 @@ print("*" * 8)
 print(res.span(),res.group())  #span() 返回iddex位置 group()返回匹配值
 
 #findall  可以多次匹配，返回列表
-print(re.findall("ring", "circularring1010circularring1010")) #['ring', 'ring']
+print(re.findall("ring", "circularring1010circularring1010"))  #['ring', 'ring']
