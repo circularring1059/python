@@ -20,6 +20,7 @@ print(re.match("[0-9]{2,3}", "1234")) #<re.Match object; span=(0, 3), match='123
 print(re.match("[0-9]{2,4}", "1234")) #<re.Match object; span=(0, 4), match='1234'>
 print(re.match("[0-9]{2,4}", "1")) #None
 print(re.match("[0-9]{2,4}", "12345")) #<re.Match object; span=(0, 4), match='1234'>
+print(re.match("[0-9]{2,4}$", "12345")) #None  不能匹配，加了$符只能匹配四位
 
 """注意 ：
 1》优先匹配多个
