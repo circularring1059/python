@@ -22,8 +22,11 @@ print(re.match(r"<[a-zA-Z]*>(.+)<[a-zA-Z]*/>", msg1)) # <re.Match object; span=(
 
 msg2 = "<html><span>hello world<html/><span/>"
 
-res = re.match(r"<([a-z]*)><([a-z]*)>(.+)<(\1/)><(\2/)>", msg2)  # ()代表一组，group(1) 表示一组 \1表示引用第一组
+res = re.match(r"<([a-z]*)><([a-z]*)>(.+)<(\1/)><(\2/)>", msg2)  # ()代表一组，group(1) 表示一组 \1表示引用第一组  \1 可以看成位置参数
 print(res) #<re.Match object; span=(0, 37), match='<html><span>hello world<html/><span/>'>
 print(res.group(1))  #html
 print(res.group(2))  #span
 print(res.group(3))  #hello world
+
+res1 = re.match(r"<(?P<name1>[a-z]*)><([a-z]*)>(.+)<(?P=name1)/><(\2/)>", msg2) #?P<name> 有名字的参数，在django路由中会用到
+print(res1)
