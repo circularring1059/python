@@ -18,6 +18,8 @@ print(re.match("[0-9]{2,}", "123")) #<re.Match object; span=(0, 3), match='123'>
 #{m,n} 最少m次，最多n次
 print(re.match("[0-9]{2,3}", "1234")) #<re.Match object; span=(0, 3), match='123'>
 print(re.match("[0-9]{2,4}", "1234")) #<re.Match object; span=(0, 4), match='1234'>
+print(re.match("[0-9]{2,4}", "1")) #None
+print(re.match("[0-9]{2,4}", "12345")) #<re.Match object; span=(0, 4), match='1234'>
 
 """注意 ：
 1》优先匹配多个
