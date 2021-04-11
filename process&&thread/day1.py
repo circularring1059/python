@@ -29,3 +29,5 @@ if __name__ == '__main__':
     process2.start()
 
     print("The parent process")
+
+#非进程池创建，即使主进程退出了，子进程依然继续运行
