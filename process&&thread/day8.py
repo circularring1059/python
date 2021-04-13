@@ -8,11 +8,13 @@ def  product(q):
     # listA = ["A", "B", "C", "D"]
     for i in range(5):
         q.put(chr(random.randint(65, 90)), timeout=5)
-        sleep(2)
+        # sleep(1)
 
 def consume(q):
     while True:
-        print(q.get(timeout=3))
+        sleep(2)
+        print(q.get())
+        # print(q.get(timeout=3))
 
 
 if __name__ == '__main__':
