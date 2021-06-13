@@ -83,4 +83,4 @@ print(dc9)
 # print(dc9) #'popitem(): dictionary is empty'
 
 del dc9 #删除整个字典对象
-print(id(dc9))
+# print(id(dc9)) 报错
