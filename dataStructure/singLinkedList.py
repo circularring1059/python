@@ -161,8 +161,17 @@ class Linkd():
                     cur["next"] = node
                     break
 
-
-
+    def remove(self, item):
+        cur = self.__head
+        if cur["data"] == item:
+            self.__head = cur["next"]
+        else:
+            while cur["next"] != None:
+                cur_next = cur["next"]
+                if cur_next["data"] == item:
+                    cur["next"] = cur_next["next"]
+                    break
+                cur = cur_next
 
 
 link = Linkd()
@@ -171,6 +180,7 @@ link.append(9)
 link.add(8)
 link.insert(2, 6)
 link.insert(2, 1)
+link.remove(7)
 link.travel()
 print("length:", link.length())
 print(link.is_empty())
