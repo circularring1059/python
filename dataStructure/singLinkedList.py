@@ -99,3 +99,62 @@ if __name__ == "__main__":
     sing_list.travel()
     print(sing_list.search("zero"))
 
+
+
+
+
+class Linkd():
+    def __init__(self, node=None):
+        self.__head = node
+
+    def is_empty(self):
+        return self.__head == None
+
+    def add(self, item):
+        node = {"data":item, "next": None}
+        node["next"] = self.__head
+        self.__head = node
+
+    def append(self, item):
+        node = {"data": item, "next": None}
+        if self.is_empty():
+            # self.add(self, item)
+            self.__head = node
+        else:
+            cur = self.__head
+            while cur["next"] != None:
+                cur = cur["next"]
+            cur["next"] = node
+
+    def travel(self):
+        cur = self.__head
+        if cur:
+            print(cur.get("data"))
+            while cur["next"] != None:
+                cur = cur["next"]
+                print(cur["data"], end="\n")
+
+    def length(self):
+        cur = self.__head
+        if not cur:
+            return 0
+        count = 1
+        while cur["next"] != None:
+            cur = cur["next"]
+            count += 1
+        return count
+
+
+    def insert(self, pos, item):
+        pass
+
+
+
+
+link = Linkd()
+print(link.is_empty())
+link.append(9)
+link.add(8)
+link.travel()
+print("length:", link.length())
+print(link.is_empty())
