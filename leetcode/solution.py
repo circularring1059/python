@@ -3,11 +3,13 @@ def solution(intervals):
     if not intervals or not intervals[0]:
         return intervals
 
+    #按做区间排序
     intervals = sorted(intervals, key = lambda x:x[0])
     print(intervals)
     res = []
+    #第一个区间的左右两边
     start, end  = intervals[0][0], intervals[0][1]
-    for i in range(len(intervals)):
+    for i in range(1, len(intervals)):
         left_pointer, right_pointer = intervals[i][0], intervals[i][1]
 
         if left_pointer <= end:
