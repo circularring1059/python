@@ -146,7 +146,21 @@ class Linkd():
 
 
     def insert(self, pos, item):
-        pass
+        count = 1
+        cur = self.__head
+        node = {"data": item, "next": None}
+        if pos <= 1:
+            self.add(item)
+        elif pos > self.length():
+            self.append(item)
+        else:
+            while cur["next"] != None:
+                count += 1
+                if count == pos:
+                    node["next"] = cur["next"]
+                    cur["next"] = node
+                    break
+
 
 
 
@@ -155,6 +169,8 @@ link = Linkd()
 print(link.is_empty())
 link.append(9)
 link.add(8)
+link.insert(2, 6)
+link.insert(2, 1)
 link.travel()
 print("length:", link.length())
 print(link.is_empty())
