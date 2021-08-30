@@ -174,6 +174,17 @@ class Linkd():
                 cur = cur_next
 
 
+    def search(self, item):
+        #有问题
+        cur = self.__head
+        while cur["next"] != None:
+            if cur["data"] == item:
+                return True
+            else:
+                cur = cur["next"]
+        return False
+
+
 link = Linkd()
 print(link.is_empty())
 link.append(9)
@@ -183,4 +194,5 @@ link.insert(2, 1)
 link.remove(7)
 link.travel()
 print("length:", link.length())
+print(link.search(9))
 print(link.is_empty())
