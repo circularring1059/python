@@ -12,3 +12,20 @@ def int_reverse(arg):
         print("type error not a int")
 
 print(int_reverse(-12000))
+
+
+int_a = 12300
+
+list_a = list(str(int_a))
+list_a.reverse()
+print(list_a)
+
+for i in list_a:
+    print(i)
+    if i == '0':
+        list_a.pop(0)
+        print(list_a)
+    else:
+        break
+
+print(list_a)
