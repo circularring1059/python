@@ -175,14 +175,15 @@ class Linkd():
 
 
     def search(self, item):
-        #有问题
         cur = self.__head
-        while cur["next"] != None:
-            if cur["data"] == item:
-                return True
-            else:
+        if cur["data"] == item:
+            return True
+        else:
+            while cur["next"]:
                 cur = cur["next"]
-        return False
+                if cur["data"] ==item:
+                    return True
+            return False
 
 
 link = Linkd()
@@ -194,5 +195,5 @@ link.insert(2, 1)
 link.remove(7)
 link.travel()
 print("length:", link.length())
-print(link.search(9))
+print(link.search(8))
 print(link.is_empty())
