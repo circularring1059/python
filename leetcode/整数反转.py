@@ -20,7 +20,7 @@ list_a = list(str(int_a))
 list_a.reverse()
 print(list_a)
 
-for i in list_a:
+for i in tuple(list_a):
     print(i)
     if i == '0':
         list_a.pop(0)
@@ -28,4 +28,4 @@ for i in list_a:
     else:
         break
 
-print(list_a)
+print(int("".join(list_a)))
