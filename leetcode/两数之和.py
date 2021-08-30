@@ -10,3 +10,13 @@ def two_sum(nums, target):
 
 print(two_sum([2,2,7,7,2],9))
 
+
+def two_sum1(arg, target):
+    res = []
+    for i in range(len(arg)):
+        for j in range(i, len(arg)):
+            if arg[i] + arg[j] == target:
+                res.append([i, j])
+    return(res)
+
+print(two_sum1([2,7,7,2],9))

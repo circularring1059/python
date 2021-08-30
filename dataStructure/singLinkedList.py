@@ -173,7 +173,6 @@ class Linkd():
                     break
                 cur = cur_next
 
-
     def search(self, item):
         cur = self.__head
         if cur["data"] == item:
