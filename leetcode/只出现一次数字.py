@@ -1,9 +1,9 @@
-def  singleNumber(nums):
+def singleNumber(nums):
     res = 0
-    for i  in nums:
+    for i in nums:
         res^=i
 
     return res
 
 
-print(singleNumber([1,2,2,3,3]))
+print(singleNumber([1,2,2,3,3,]))

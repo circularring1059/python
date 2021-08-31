@@ -1,7 +1,8 @@
 def isValid(string):
     mapping = {")":"(", "]":"[", "}":"{"}
     stack = []
-    for i, char in enumerate(string):
+    # for _, char in enumerate(string):
+    for char in string:
         if char not in mapping:
             stack.append(char)
         else:
@@ -12,3 +13,24 @@ def isValid(string):
     # return True
 
 print(isValid("([])"))
+
+
+def isValid1(string):
+    stack = []
+    if string[0] in ("}", ")", "]"):
+        return False
+
+    for i in range(len(string)):
+            if string[i] in ("{", "[", "("):
+                stack.append(i)
+            else:
+                stack.pop()
+                if i == len(string)-1:
+                    if stack:
+                        return False
+                else:
+                    if not stack:
+                        return False
+    return True
+
+print(isValid1("(()]([]))"))
