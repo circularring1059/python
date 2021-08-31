@@ -10,3 +10,4 @@ def generate(n, k):
 
 
 print(generate(5,3))
+
