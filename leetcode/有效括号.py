@@ -27,12 +27,12 @@ def isValid1(string):
         else:
             if stack.pop() != mapping[string[i]]:
                 return False
-            if i == len(string)-1:
-                if stack:
-                    return False
-            else:
-                if not stack:
-                    return False
-    return True
+            # if i == len(string)-1:
+            #     if stack:
+            #         return False
+            # else:
+            #     if not stack:
+            #         return False
+    return len(stack) == 0
 
 print(isValid1("(([)]([]))"))
