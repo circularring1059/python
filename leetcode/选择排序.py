@@ -10,6 +10,9 @@ def choose_sort(arg):
 
 class ChooseSort():
     def choose_sort(self, array):
+        if len(array) < 2:
+            return array
+
         for i in range(len(array)-1):
             middle = i
             for y in range(i+1, len(array)):
