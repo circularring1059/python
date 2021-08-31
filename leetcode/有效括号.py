@@ -34,8 +34,8 @@ def isValid1(string):
                 return False
             if stack.pop() != mapping[string[i]]:
                 return False
-    return True
+    return len(stack) == 0
 
-print(isValid1("([)]"))
+print(isValid1("("))
 
 
