@@ -1,3 +1,4 @@
+#适用非重复列表
 def two_sum(nums, target):
     list1,dict1 = [],{}
     for i in range(len(nums)):
@@ -10,7 +11,7 @@ def two_sum(nums, target):
 
 print(two_sum([2,2,7,7,2],9))
 
-
+#穷举，一个数没有使用两次
 def two_sum1(arg, target):
     res = []
     for i in range(len(arg)):
@@ -21,18 +22,27 @@ def two_sum1(arg, target):
 
 print(two_sum1([2,7,7,2],9))
 
-
+#适用非重复列表
 class TwoSum():
     def two_sum(self, array, target):
         res, dict_tmp = [], {}
         for i in range(len(array)):
             if target -array[i] in dict_tmp:
                 res.append([dict_tmp[target-array[i]], i])
-                dict_tmp[array[i]] = i
-            else:
-                dict_tmp[array[i]] = i
+            #     dict_tmp[array[i]] = i
+            # else:
+            dict_tmp[array[i]] = i
         return res
-
 
 two_sum_ins = TwoSum()
 print(two_sum_ins.two_sum([1,2,4,5,2], 9))
+
+# def two_sum1(array, target):
+#     res = []
+#     for i in range(len(array)):
+#         if target - array[i] in array:
+#             y = array.index(target-array[i])
+#             # if i != y:
+#             res.append([i, y])
+#     return res
+# print(two_sum1([1,2,2,4,2], 4))
