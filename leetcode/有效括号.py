@@ -19,9 +19,9 @@ def isValid1(string):
     stack = []
     mapping = {")": "(", "]": "[", "}": "{"}
 
-    for i in range(len(string)):
-        if string[i] in ("{", "[", "("):
-            stack.append(string[i])
+    for i in string:
+        if i in ("{", "[", "("):
+            stack.append(i)
         else:
             # if i == len(string)-1:
             #     if stack:
@@ -32,10 +32,11 @@ def isValid1(string):
             #         return False
             if not stack:
                 return False
-            if stack.pop() != mapping[string[i]]:
+            if stack.pop() != mapping[i]:
                 return False
-    return len(stack) == 0
+    # return len(stack) == 0
+    return True
 
-print(isValid1("("))
+print(isValid1("((()))"))
 
 
