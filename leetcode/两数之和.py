@@ -20,3 +20,19 @@ def two_sum1(arg, target):
     return(res)
 
 print(two_sum1([2,7,7,2],9))
+
+
+class TwoSum():
+    def two_sum(self, array, target):
+        res, dict_tmp = [], {}
+        for i in range(len(array)):
+            if target -array[i] in dict_tmp:
+                res.append([dict_tmp[target-array[i]], i])
+                dict_tmp[array[i]] = i
+            else:
+                dict_tmp[array[i]] = i
+        return res
+
+
+two_sum_ins = TwoSum()
+print(two_sum_ins.two_sum([1,2,4,5,2], 9))

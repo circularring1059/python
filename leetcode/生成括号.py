@@ -13,4 +13,4 @@ def generateParenthesis(n):
     backtrack()
     return res
 
-print(generateParenthesis(7))
+print(generateParenthesis(1))
