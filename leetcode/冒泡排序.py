@@ -19,7 +19,7 @@ class BubblingSort():
                     self.array[j], self.array[j+1] = self.array[j+1], self.array[j]
                     flag = False
             if flag:
-                    break
+                break
         return self.array
 
 bubbling_sort_ins = BubblingSort([2,5,2,9,6])
