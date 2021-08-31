@@ -18,21 +18,24 @@ print(isValid("([(]))"))
 def isValid1(string):
     stack = []
     mapping = {")": "(", "]": "[", "}": "{"}
-    if string[0] in ("}", ")", "]"):
-        return False
 
     for i in range(len(string)):
         if string[i] in ("{", "[", "("):
-            stack.append(i)
+            stack.append(string[i])
         else:
-            if stack.pop() != mapping[string[i]]:
-                return False
             # if i == len(string)-1:
             #     if stack:
             #         return False
             # else:
+            #     print(stack)
             #     if not stack:
             #         return False
-    return len(stack) == 0
+            if not stack:
+                return False
+            if stack.pop() != mapping[string[i]]:
+                return False
+    return True
 
-print(isValid1("(([)]([]))"))
+print(isValid1("([)]"))
+
+
