@@ -12,4 +12,3 @@ def longestCommonPrefix(nums):
 print(longestCommonPrefix(["abc", "a", "c"]))
 
 
-

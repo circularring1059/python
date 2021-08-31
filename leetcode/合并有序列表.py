@@ -31,3 +31,21 @@ def mergeList1(nums1, nums2):
     return nums3
 
 print(mergeList1([1,2,4],[3,6,6,9]))
+
+
+class MergeList():
+    def merge_list(selfm, array1, array2):
+        index = 0
+        for i in range(len(array2)):
+            while index < len(array1):
+              if array2[i] <= array1[index]:
+                  array1.insert(index, array2[i])   #insert 费劲
+                  break
+              else:
+                  index += 1
+        else:
+            array1.extend(array2[i:])
+        return array1
+
+merge_list_ins = MergeList()
+print(merge_list_ins.merge_list([1,2,6], [4,6,9]))
