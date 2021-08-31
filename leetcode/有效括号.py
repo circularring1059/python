@@ -36,6 +36,6 @@ def isValid1(string):
                 return False
     return len(stack) == 0
 
-print(isValid1("(()){"))
+print(isValid1("("))
 
 
