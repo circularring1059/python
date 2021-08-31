@@ -23,4 +23,31 @@ def solution(intervals):
 
 
 
-print(solution([[15,18],[1,3],[2,6],[8,10]]))
+# print(solution([[15,18],[1,3],[2,6],[8,10]]))
+
+
+#合并区间
+
+class Solution():
+    def __init__(self, section):
+        self.section = section
+
+    def solution(self):
+        if not self.section or not self.section[0]:
+            return self.section
+
+        res =[]
+        self.section = sorted(self.section, key=lambda x:x[0])
+        start, end = self.section[0][0], self.section[0][1]
+        for i in range(1, len(self.section)):
+            left_point, right_point = self.section[i][0], self.section[i][1]
+            if end >= left_point:
+                end = max(end, right_point)
+            else:
+                res.append([start, end])
+                start, end = left_point, right_point
+        res.append([start, end])
+        return res
+
+solution_ins = Solution([[1,2], [4,6], [3,9]])
+print(solution_ins.solution())
