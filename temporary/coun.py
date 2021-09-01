@@ -38,3 +38,13 @@ person.__tall = 168
 print(dir(person))
 print(person.__tall)
 print(person._Person__tall)
+
+str1 = "ringyuanrgnhj"
+
+dict_tmp = {}
+for i in range(len(str1)):
+    if str1[i] not in dict_tmp:
+        dict_tmp[str1[i]] = 1
+    else:
+        dict_tmp[str1[i]] += 1
+print(dict(sorted(dict_tmp.items(), key=lambda x:x[1], reverse=True)))

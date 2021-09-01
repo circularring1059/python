@@ -24,7 +24,7 @@
 #         right += 1
 #     return False
 #
-# print(checkInclusion("yuan",'jianchyuanhehe'))
+# print(checkInclusion("yuy",'yyu'))
 
 
 # def is_substr(str1, str2):
@@ -41,15 +41,27 @@
 #
 # print(is_substr('yuan', 'wyuan'))
 
-def is_substr(str1, str2):
-    i, lenth_str1 = 0, len(str1)
-    for j in str2:
-        if i +1 == lenth_str1:
-            if j == str1[i]:
-                return True
+# def is_substr(str1, str2):
+#     i, lenth_str1 = 0, len(str1)
+#     for j in str2:
+#         if i +1 == lenth_str1:
+#             if j == str1[i]:
+#                 return True
+#
+#         if j == str1[i]:
+#             i += 1
+#     return False
+#
+# print(is_substr('yuy', "yyu"))
 
-        if j == str1[i]:
-            i += 1
-    return False
+# def is_substr(str1, str2):
+#     i, j = 0, 0
+#     while i < len(str1) and j < len(str2):
+#         if str1[i] == str2[j]:
+#             i += 1
+#         j += 1
+#     return i == len(str1)
+#
+# print(is_substr('yay', 'yyaun'))
 
-print(is_substr('yu', "ujjkku"))
+
