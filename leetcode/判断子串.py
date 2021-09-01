@@ -27,16 +27,16 @@
 # print(checkInclusion("yuan",'jianchyuanhehe'))
 
 
-#有点问题
 def is_substr(str1, str2):
     for i in range(len(str2)):
-        if str1[0] == str2[i]:
-            start = i
-            end = i + len(str1)
-            print(str1, str2[start: end])
-            if str1 == str2[start: end]:
-                return True
+        if i + len(str1) <= len(str2):
+            if str1[0] == str2[i]:
+                start = i
+                end = i + len(str1)
+                if str1 == str2[start: end]:
+                    return True
+        else:
+            break
     return False
 
-
-print(is_substr('yan', 'yuanjiancheng'))
+print(is_substr('yuan', 'wyuan'))
