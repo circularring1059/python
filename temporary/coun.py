@@ -48,3 +48,5 @@ for i in range(len(str1)):
     else:
         dict_tmp[str1[i]] += 1
 print(dict(sorted(dict_tmp.items(), key=lambda x:x[1], reverse=True)))
+
+print(str1.find("r"))

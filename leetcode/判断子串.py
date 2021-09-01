@@ -64,4 +64,13 @@
 #
 # print(is_substr('yay', 'yyaun'))
 
+#find
+def is_substr(str1, str2):
+    l = -1
+    for i in str1:
+        l = str2.find(i, l+1)
+        if l == -1:
+            return False
+    return True
 
+print(is_substr("yu", "yuanji"))
