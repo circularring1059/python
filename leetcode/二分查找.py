@@ -11,10 +11,12 @@ class Binaryfind():
             else:
                 left = middle_index
 
+            #这里要后做判断
             if left + 1 == right:
                 return array[right] == target
+
         return False
 
 binary_find_ins = Binaryfind()
-print(binary_find_ins.binary_find([1, 2, 3, 6, 9], 3))
+print(binary_find_ins.binary_find([1, 2, 3], 2))
 
