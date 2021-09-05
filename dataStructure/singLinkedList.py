@@ -198,7 +198,7 @@ class Linkd():
 
 link = Linkd()
 # print(link.is_empty())
-link.append(9)
+# link.append(9)
 link.add(8)
 # link.insert(2, 6)
 # link.insert(2, 1)
