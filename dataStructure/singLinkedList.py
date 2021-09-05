@@ -80,24 +80,24 @@ class Student():
         return False
 
 
-if __name__ == "__main__":
-    print("start crud singe linked list")
-    sing_list = Student()
-    print(sing_list.is_empty())
-    sing_list.append(1)
-    sing_list.append("one")
-    sing_list.append(2)
-    sing_list.append("two")
-    print(sing_list.length())
-    sing_list.travel()
-    sing_list.remove("one")
-    sing_list.remove("two")
-    sing_list.travel()
-    sing_list.insert(2, "3")
-    sing_list.travel()
-    sing_list.add("zero")
-    sing_list.travel()
-    print(sing_list.search("zero"))
+# if __name__ == "__main__":
+#     print("start crud singe linked list")
+#     sing_list = Student()
+#     print(sing_list.is_empty())
+#     sing_list.append(1)
+#     sing_list.append("one")
+#     sing_list.append(2)
+#     sing_list.append("two")
+#     print(sing_list.length())
+#     sing_list.travel()
+#     sing_list.remove("one")
+#     sing_list.remove("two")
+#     sing_list.travel()
+#     sing_list.insert(2, "3")
+#     sing_list.travel()
+#     sing_list.add("zero")
+#     sing_list.travel()
+#     print(sing_list.search("zero"))
 
 
 
@@ -184,15 +184,29 @@ class Linkd():
                     return True
             return False
 
+    def reverse(self):
+        cur = self.__head
+        if cur:
+            pre = None
+            while cur["next"]:
+                next = cur["next"]
+                cur["next"] = pre
+                pre = cur
+                cur = next
+            cur["next"] = pre
+            self.__head = cur
 
 link = Linkd()
-print(link.is_empty())
+# print(link.is_empty())
 link.append(9)
 link.add(8)
-link.insert(2, 6)
-link.insert(2, 1)
-link.remove(7)
+# link.insert(2, 6)
+# link.insert(2, 1)
+# link.remove(7)
+# link.travel()
+# print("length:", link.length())
+# print(link.search(8))
+# print(link.is_empty())
 link.travel()
-print("length:", link.length())
-print(link.search(8))
-print(link.is_empty())
+link.reverse()
+link.travel()
