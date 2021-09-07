@@ -14,6 +14,6 @@ def generateParenthesis(n):
             print("**", s,right)
             backtrack(s + ")", left, right+1)
     backtrack()
-    return res
+    return len(res)
 
-print(generateParenthesis(4))
+print(generateParenthesis(5))
