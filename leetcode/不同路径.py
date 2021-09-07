@@ -1,19 +1,19 @@
 def maxPath(m, n):
-    res = []
-    def s(left=0 ,right=0):
-        print(left, right)
+    # res = []
+    count = 0
+    def backtask(left=0 ,right=0):
+        # print(left, right)
+        nonlocal count
         if left == m and right == n:
-            res.append("*")
+            count += 1
+        else:
+            if left < m:
+                backtask(left+1, right)
 
-        if left < m:
-            s(left+1, right)
-
-        if right < n:
-            s(left, right+1)
-
-
-    s()
-    return len(res)
+            if right < n:   #  这里  riight < left  并且 m==n 时就是括号组合
+                backtask(left, right+1)
+    backtask()
+    return count
 
 print(maxPath(5,5))
 
@@ -31,4 +31,3 @@ def getAns(x=0,y=0, m=0, n=0, num=0):
     return n1 + n2
 
 print(getAns(m=5, n=5))
-
