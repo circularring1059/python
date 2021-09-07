@@ -10,7 +10,7 @@ def maxPath(m, n):
             if left < m:
                 backtask(left+1, right)
 
-            if right < n:   #  这里  riight < left  并且 m==n 时就是括号组合
+            if right < n:
                 backtask(left, right+1)
     backtask()
     return count
