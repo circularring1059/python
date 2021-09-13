@@ -5,7 +5,7 @@ def solution(intervals):
 
     #按做区间排序
     intervals = sorted(intervals, key = lambda x:x[0])
-    print(intervals)
+    # print(intervals)
     res = []
     #第一个区间的左右两边
     start, end  = intervals[0][0], intervals[0][1]
@@ -23,7 +23,7 @@ def solution(intervals):
 
 
 
-# print(solution([[15,18],[1,3],[2,6],[8,10]]))
+print(solution([[15,18],[1,3],[2,6],[8,10]]))
 
 
 #合并区间
@@ -49,5 +49,5 @@ class Solution():
         res.append([start, end])
         return res
 
-solution_ins = Solution([[1,2], [4,6], [3,9]])
-print(solution_ins.solution())
+# solution_ins = Solution([[1,2], [4,6], [3,9]])
+# print(solution_ins.solution())
