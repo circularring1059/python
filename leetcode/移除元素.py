@@ -24,11 +24,11 @@ def removeElement1(array, val):
 
 print(removeElement1([1,2,4,4,5,2,1], 1))
 
-def removeElement2(array, val):
-    for i in range(len(array)-1, -1, -1):
-       if array[i] == val:
-           array.pop()
-    return len(array)
-
-
-print(removeElement2([1,2,3,3,4],3))
+# def removeElement2(array, val):
+#     for i in range(len(array)-1, -1, -1):
+#        if array[i] == val:
+#            array.pop()
+#     return array
+#
+#
+# print(removeElement2([1,2,3,3,4],3))
