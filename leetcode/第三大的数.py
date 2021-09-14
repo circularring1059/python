@@ -31,19 +31,19 @@ class Solution():
             nums[i],nums[s] = nums[s],nums[i]
         return nums[2]
 
-    # def thridMax3(self, nums):
-    #     nums = list(set(nums))
-    #     if len(nums) <= 2:
-    #         return max(nums)
-    #     def backtask(nums):
-    #         if len(nums) <= 1:
-    #             return nums
-    #         mid = nums[0]
-    #         left = [i for i in range(1,len(nums)) if nums[i] <= mid ]
-    #         right = [i for i in range(1,len(nums)) if nums[i] > mid]
-    #         return backtask(right)+[mid]+backtask(left)
-    #     s=backtask(nums)
-    #     return s
+    def thridMax3(self, nums):
+        nums = list(set(nums))
+        if len(nums) <= 2:
+            return max(nums)
+        def backtask(nums):
+            if len(nums) <= 1:
+                return nums
+            mid = nums[0]
+            left = [nums[i] for i in range(1,len(nums)) if nums[i] <= mid ]
+            right = [nums[i] for i in range(1,len(nums)) if nums[i] > mid]
+            return backtask(right)+[mid]+backtask(left)
+        return backtask(nums)[2]
+
 
 thrid_max_ins = Solution()
 print(thrid_max_ins.thridMax([2, 5, 6, 7]))
