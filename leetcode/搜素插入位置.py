@@ -29,3 +29,7 @@ search_index_ins = Solution()
 print(search_index_ins.searchInsert1([1,3,5,8,9], 5))
 print(search_index_ins.searchInsert2([1,3,5,8,9], 5))
 print(search_index_ins.searchInsert3([1,3,5,8,9], 5))
+
+list_a = [1,2,3,4]
+for i, j in enumerate(list_a):
+    print(i,j)
