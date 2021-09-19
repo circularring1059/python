@@ -20,11 +20,9 @@ class Solution():
             if n == 2:
                 return 2
 
-            return backstack(n -1) + backstack(n -2)
+            return backstack(n - 1) + backstack(n - 2)
+
         return backstack(n)
-
-
-
 
 
 climb_stairs_ins = Solution()
