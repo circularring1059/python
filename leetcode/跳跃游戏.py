@@ -31,7 +31,7 @@ class CanJump():
         #在某点能跳跃最大长度,开始是起始位置
         max_length = self.array[0]
         #肯定可以跳到第二个，所以从第二个点开始循环
-        for i in range(1, len(self.array)):
+        for i in range(1, len(self.array)-1):
             max_length = max(max_length, self.array[i] +i)
             if max_length >= len(self.array)-1:
                 return True
