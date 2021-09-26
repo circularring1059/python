@@ -20,5 +20,23 @@ class Solution():
 
         return res
 
+    def findMissingRanges1(self, nums, lower,  upper):
+        start, end = lower, lower
+        res = []
+        if not len(nums):
+            res.append(str(lower)+"->"+str(upper))
+
+        if nums[0]-1 ==  lower:
+            res.append(str(lower))
+        elif nums[0]-1 >  lower:
+            res.append(str(lower)+"->"+str(nums[0]-1))
+        else:
+            for i in range(1, len(nums)):
+                pass
+
+
+
+
 find_missing_ranges = Solution()
 print(find_missing_ranges.findMissingRanges( [0, 1, 3, 50, 75],0,99))
+print(find_missing_ranges.findMissingRanges( [],0,99))
