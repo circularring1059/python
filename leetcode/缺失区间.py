@@ -42,23 +42,23 @@ class Solution():
         elif nums[0] - 1 > lower:
             res.append(str(lower) + "->" + str(nums[0] - 1))
         else:
-            start, end = nums[1]+1, nums[1]+1
+            start, end = nums[1] + 1, nums[1] + 1
             for i in range(1, len(nums)):
-                if  i == len(nums)-1:
-                    if upper == nums[len(nums)-1]:
+                if i == len(nums) - 1:
+                    if upper == nums[len(nums) - 1]:
                         pass
-                    elif upper == nums[len(nums)-1] -1:
+                    elif upper == nums[len(nums) - 1] - 1:
                         res.append(str(upper))
                     else:
-                        res.append(str(nums[len(nums)-1]+1)+ "->" + str(upper))
+                        res.append(str(nums[len(nums) - 1] + 1) + "->" + str(upper))
                     return res
-                if nums[i] == nums[i+1]-1:
+                if nums[i] == nums[i + 1] - 1:
                     pass
-                elif nums[i] == nums[i+1] -2:
+                elif nums[i] == nums[i + 1] - 2:
                     res.append(str(start))
                 else:
-                    res.append(str(start)+"->"+str(nums[i+1]-1))
-                    start = nums[i+1]+1
+                    res.append(str(start) + "->" + str(nums[i + 1] - 1))
+                    start = nums[i + 1] + 1
             return res
 
 
