@@ -5,7 +5,7 @@ class Solution():
 
         l = len(gas)
         for i in range(l):
-            if (i-1 >= 0 and gas[i-1] > gas[i-1]):
+            if (i - 1 >= 0 and gas[i - 1] > cost[i - 1]):
                 continue
             currentGas = gas[i]
             cnt = 1
@@ -15,9 +15,10 @@ class Solution():
                     return i
                 cnt += 1
                 costt = cost[nextStation]
-                nextStation = (nextStation +1) % l
+                nextStation = (nextStation + 1) % l
                 currentGas += gas[nextStation] - costt
         return -1
 
+
 can_compete_circuit_ins = Solution()
-print(can_compete_circuit_ins.canCompleteCircuit([1,2,3,4,5],[3,4,5,1,2]))
+print(can_compete_circuit_ins.canCompleteCircuit([1, 2, 3, 4, 5], [3, 4, 5, 1, 2]))
