@@ -72,6 +72,18 @@ class BTree():
 
         #高度
         high = self.high()
+        if high >= 1:
+            for _ in range(2, high + 1):
+                level = []
+                for node in level_order[-1]:
+                    if LChild_Of_Node(node):
+                        level.append(LChild_Of_Node(node))
+                    if RChild_Of_Node(node):
+                        level.append(RChild_Of_Node(node))
+                if level:
+                    level_order.append(level)
+
+
 
 
 
