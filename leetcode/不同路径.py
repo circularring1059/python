@@ -18,7 +18,7 @@ def maxPath(m, n):
     return count
 
 
-print(maxPath(5, 5))
+print(maxPath(1, 1))
 
 
 def getAns(x=0, y=0, m=0, n=0, num=0):
