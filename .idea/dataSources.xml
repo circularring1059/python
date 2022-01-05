@@ -7,5 +7,11 @@
       <jdbc-driver>com.mysql.cj.jdbc.Driver</jdbc-driver>
       <jdbc-url>jdbc:mysql://192.168.112.12:3306/ring</jdbc-url>
     </data-source>
+    <data-source source="LOCAL" name="Backup.db" uuid="b56ce449-2cae-436b-9022-edb00fe71fcc">
+      <driver-ref>sqlite.xerial</driver-ref>
+      <synchronize>true</synchronize>
+      <jdbc-driver>org.sqlite.JDBC</jdbc-driver>
+      <jdbc-url>jdbc:sqlite:F:/ring/watch/android_ff860e731fc394a795387905e64ab984/Backup.db</jdbc-url>
+    </data-source>
   </component>
 </project>
