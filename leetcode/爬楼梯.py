@@ -25,6 +25,22 @@ class Solution():
         return backstack(n)
 
 
+    def climbStairs2(self, n):
+        count = 0
+        def backstack(n,m):
+            nonlocal count
+            if  m == n:
+                count += 1
+            if m < n:
+                backstack(n, m+1)
+            if m < n-1:
+                backstack(n, m+2)
+        backstack(n,0)
+        return count
+
+
+
 climb_stairs_ins = Solution()
 print(climb_stairs_ins.climbStairs(4))
-print(climb_stairs_ins.climbStairs1(4))
+print(climb_stairs_ins.climbStairs1(7))
+print(climb_stairs_ins.climbStairs(4))
