@@ -7,11 +7,11 @@ def generateParenthesis(n):
             return res
 
         if left < n:
-            print("*", s, left)
+            # print("*", s, left)
             backtrack(s + "(", left + 1, right)
 
-        if right < n:
-            print("**", s,right)
+        if right < left:
+            # print("**", s,right)
             backtrack(s + ")", left, right+1)
     backtrack()
     return len(res)

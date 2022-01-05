@@ -30,10 +30,18 @@ def isValid1(string):
             #     print(stack)
             #     if not stack:
             #         return False
-            if not stack:
+            # if not stack:
+            #     return False
+            # if stack.pop() != mapping[i]:
+            #     return False
+
+            # if not stack:
+            #     return False
+            # if stack.pop() !=  mapping[i]:
+            #     return  False
+            if not stack or stack.pop() != mapping[i]:
                 return False
-            if stack.pop() != mapping[i]:
-                return False
+    print('*', stack)
     return len(stack) == 0
 
 print(isValid1("("))
