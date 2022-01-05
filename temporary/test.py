@@ -1,17 +1,17 @@
-def can(num1, num2):
+def can(gas, cost):
     def location_gas(n):
         if n == 0:
-            return num1[i]
-        if n + i == len(num1):
-            return location_gas(n - 1) + num1[n + i - len(num1)] - num2[n + i - 1]
+            return gas[i]
+        if n + i == len(gas):
+            return location_gas(n - 1) + gas[n + i - len(gas)] - cost[n + i - 1]
 
-        if n >= len(num1):
-            return location_gas(n - 1) + num1[n + i - len(num1)] - num2[n + i - 1 - len(num1)]
+        if n >= len(gas):
+            return location_gas(n - 1) + gas[n + i - len(gas)] - cost[n + i - 1 - len(gas)]
 
-        return location_gas(n - 1) + num1[n + i] - num2[n + i - 1]
+        return location_gas(n - 1) + gas[n + i] - cost[n + i - 1]
 
-    for i in range(len(num1)):
-        for n in range(len(num1)+1):
+    for i in range(len(gas)):
+        for n in range(len(gas)+1):
             if location_gas(n) < 0:
                 return False
         return True
