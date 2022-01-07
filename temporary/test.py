@@ -5,7 +5,7 @@ def can(gas, cost):
         if n + i == len(gas):
             return location_gas(n - 1) + gas[n + i - len(gas)] - cost[n + i - 1]
 
-        if n >= len(gas):
+        if n + 1 > len(gas):
             return location_gas(n - 1) + gas[n + i - len(gas)] - cost[n + i - 1 - len(gas)]
 
         return location_gas(n - 1) + gas[n + i] - cost[n + i - 1]
@@ -16,4 +16,4 @@ def can(gas, cost):
                 return False
         return True
 
-print(can([1,2,5],[3,6,2]))
+print(can([1,2,5,5],[3,1,1,2]))
