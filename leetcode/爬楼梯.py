@@ -24,20 +24,20 @@ class Solution():
 
         return backstack(n)
 
-
     def climbStairs2(self, n):
         count = 0
+
         def backstack(n):
             nonlocal count
-            if  n == 0:
+            if n == 0:
                 count += 1
             if n > 0:
-                backstack(n+1)
-            if  n > 1:
-                backstack(n+2)
+                backstack(n + 1)
+            if n > 1:
+                backstack(n + 2)
+
         backstack(n)
         return count
-
 
 
 climb_stairs_ins = Solution()
