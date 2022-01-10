@@ -1,6 +1,7 @@
 from operator import itemgetter
 from urllib import parse
 import requests
+import json
 
 import datetime as dt
 # import maya
@@ -27,16 +28,16 @@ class HarborCleaner(object):
 
     def __init__(self, user: str, password: str, hostname: str, port: int, use_https=True):
         scheme = "https" if use_https else "http"
-        api_base = f"{scheme}://{hostname}:{port}/api"
+        api_base = f"{scheme}://{hostname}:{port}/api/v2.0"
         self.search_api = api_base + "/search?q={key_word}"
         self.projects_api = api_base + "/projects"
-        self.repository_query_api = api_base + "/repositories?project_id={project_id}"
+        self.repository_query_api = api_base + "/projects/{project}/repositories"
         # repo_name 一般为 "project_name/repo_name" 格式，必须做转义处理（因为中间有斜杠）
-        self.repository_tags_api = api_base + "/repositories/{repo_name}/tags"
+        self.repository_tags_api = api_base + "/projects/{project}/repositories/{tag}/artifacts"
         self.repository_tag_api = self.repository_tags_api + "/{tag}"
 
         self.session = requests.Session()
-        self.session.verify = False  # 如果公司是使用自签名证书，不能通过 SSL 验证，就需要设置这个
+        # self.session.verify = False  # 如果公司是使用自签名证书，不能通过 SSL 验证，就需要设置这个
         self.session.headers = {
             "Accept": "application/json"
         }
@@ -47,32 +48,48 @@ class HarborCleaner(object):
         resp = self.session.get(self.projects_api)
 
         success = resp.status_code == 200
+        for i in resp.json():
+            if i.get("metadata").get("public") == "false":
+                print(i.get("name"), i.get("project_id"))
+
         return {
             "success": success,
             "data": resp.json() if success else resp.text
         }
 
-    def get_all_repos(self, project: dict):
-        url = self.repository_query_api.format(project_id=project['project_id'])
-        resp = self.session.get(url)
 
-        success = resp.status_code == 200
-        return {
-            "success": success,
-            "data": resp.json() if success else resp.text
-        }
+    def get_all_repos(self, projects: list):
+        dict1 = {}
+        for project in projects:
+            j = 0
+            list1 = []
+            while True:
+                url = self.repository_query_api.format(project=project) + "?page={}".format(j)
+                resp = self.session.get(url)
+                j += 1
+                if not resp.json():
+                    break
 
-    def get_all_tags(self, repo: dict):
+                for i in resp.json():
+                    list1.append(i.get("name").split("/", 1)[1])
+                    print(i.get("name"), i.get("project_id"))
+            dict1.update({project:list1})
+        return dict1
+
+
+    def get_all_tags(self,project, tag):
         """repo_name 需要做转义"""
-        repo_name = parse.quote(repo['name'], safe="")
-        url = self.repository_tags_api.format(repo_name=repo_name)
+        # repo_name = parse.quote(repo['name'], safe="")
+        url = self.repository_tags_api.format(project=project, tag=tag)
         resp = self.session.get(url)
 
         success = resp.status_code == 200
-        return {
-            "success": success,
-            "data": resp.json() if success else resp.text
-        }
+        print(resp.json())
+
+        # return {
+        #     "success": success,
+        #     "data": resp.json() if success else resp.text
+        # }
 
     def get_tags_except_lastest_n(self, repo: dict, n: int):
         """获取除了最新的 n 个 tag 之外的所有 tags"""
@@ -107,41 +124,52 @@ class HarborCleaner(object):
             "message": self.delete_status.get(resp.status_code)
         }
 
-    def soft_delete_all_tags_except_latest_n(self, n):
-        """从每个仓库中，删除所有的 tags，只有最新的 n 个 tag 外的所有 tags 除外"""
-        res_projects = self.get_all_projects()
-        if not res_projects['success']:
-            logger.warning("faild to get all projects, message: {}".format(res_projects['data']))
-
-        logger.info("we have {} projects".format(len(res_projects['data'])))
-        for p in res_projects['data']:
-            res_repos = self.get_all_repos(p)
-            if not res_projects['success']:
-                logger.warning(
-                    "faild to get all repos in project: {}, message: {}".format(p['name'], res_repos['data']))
-
-            logger.info("we have {} repos in project:{}".format(len(res_repos['data']), p['name']))
-            for repo in res_repos['data']:
-                logger.info("deal with repo: {}".format(repo['name']))
-
-                old_tags = self.get_tags_except_lastest_n(repo, n)
-                logger.info("we have {} tags to delete in repo: {}".format(len(old_tags), repo['name']))
-                for tag in old_tags:
-                    logger.info("try to delete repo:{}, tag: {}, create_time: {}".format(repo['name'], tag['name'],
-                                                                                         tag['created']))
-                    result = self.soft_delete_tag(repo, tag)
-                    if result['success']:
-                        logger.info("success delete it.")
-                    else:
-                        logger.warning("delete failed!, message: {}".format(result['message']))
+    # def soft_delete_all_tags_except_latest_n(self, n):
+    #     """从每个仓库中，删除所有的 tags，只有最新的 n 个 tag 外的所有 tags 除外"""
+    #     res_projects = self.get_all_projects()
+    #     if not res_projects['success']:
+    #         logger.warning("faild to get all projects, message: {}".format(res_projects['data']))
+    #
+    #     logger.info("we have {} projects".format(len(res_projects['data'])))
+    #     for p in res_projects['data']:
+    #         res_repos = self.get_all_repos(p)
+    #         if not res_projects['success']:
+    #             logger.warning(
+    #                 "faild to get all repos in project: {}, message: {}".format(p['name'], res_repos['data']))
+    #
+    #         logger.info("we have {} repos in project:{}".format(len(res_repos['data']), p['name']))
+    #         for repo in res_repos['data']:
+    #             logger.info("deal with repo: {}".format(repo['name']))
+    #
+    #             old_tags = self.get_tags_except_lastest_n(repo, n)
+    #             logger.info("we have {} tags to delete in repo: {}".format(len(old_tags), repo['name']))
+    #             for tag in old_tags:
+    #                 logger.info("try to delete repo:{}, tag: {}, create_time: {}".format(repo['name'], tag['name'],
+    #                                                                                      tag['created']))
+    #                 result = self.soft_delete_tag(repo, tag)
+    #                 if result['success']:
+    #                     logger.info("success delete it.")
+    #                 else:
+    #                     logger.warning("delete failed!, message: {}".format(result['message']))
 
 
 if __name__ == "__main__":
     # 1. 通过 harbor 的 restful api 进行软删除
     harbor_cleaner = HarborCleaner(
-        user="admin",
-        password="Admin123",
-        hostname="reg.harbor.com",
-        port=8321
+        user="wz",
+        password="Weizhong123",
+        hostname="harbor.ricequant.com",
+        port=443
     )
-    harbor_cleaner.soft_delete_all_tags_except_latest_n(10)  # 每个镜像只保留最新的十个 tag
+    # harbor_cleaner.soft_delete_all_tags_except_latest_n(10)  # 每个镜像只保留最新的十个 tag
+    # print(harbor_cleaner.get_all_projects())
+    print(harbor_cleaner.get_all_repos(["wz", "newdaq"]))
+    # harbor_cleaner.get_all_tags("wz", "webank-api-server")
+
+# r = requests.get('https://harbor.ricequant.com/api/v2.0/projects', auth=('wz', 'Weizhong123'), )
+# # print(r.status_code)
+# # print(r.content)
+# print(r.json())
+# print(r.headers['content-type'])
+
+print("newdaq/ricequant/rqams-compute-manager".split("/", 1))
