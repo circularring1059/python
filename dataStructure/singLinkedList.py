@@ -149,7 +149,6 @@ class Linkd():
                 indexTwo_data = self.index(indexTwo)
                 cur = self.__head
                 for i in range(max(indexOne, indexTwo) + 1):
-                    print(i)
                     if i == indexOne:
                         cur["data"] = indexTwo_data
                     if i == indexTwo:
@@ -243,6 +242,25 @@ class Linkd():
             cur["next"] = pre
             self.__head = cur
 
+    def linkSort(self, reverse=False):
+        if self.length() <= 1:
+            pass
+        else:
+         for i in range(self.length()-1):
+             for j in range(self.length()-i-1):
+                 flag = True
+                 if reverse:
+                     if self.index(j) > self.index(j+1):
+                         flag = False
+                         self.swap(j, j+1)
+                 else:
+                     if self.index(j) < self.index(j+1):
+                         flag = False
+                         self.swap(j, j+1)
+
+             if flag:
+                 break
+
 
 link = Linkd()
 # print(link.is_empty())
@@ -251,6 +269,7 @@ link.add(8)
 link.add(7)
 link.add(3)
 link.add(1)
+link.add(19)
 # link.insert(2, 6)
 # link.insert(2, 1)
 # link.remove(7)
@@ -260,9 +279,12 @@ link.add(1)
 # print(link.is_empty())
 # link.travel()
 # link.reverse()
-# link.travel()
-print(link.index(1))
-print(link.index(0))
-link.showSelf()
-link.swap(1, 3)
-link.showSelf()
+link.travel()
+link.linkSort(reverse=True)
+print("after sort")
+link.travel()
+# print(link.index(1))
+# print(link.index(0))
+# link.showSelf()
+# link.swap(1, 3)
+# link.showSelf()
