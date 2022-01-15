@@ -31,8 +31,7 @@ class Student():
         node.next = self.__head
         self.__head = node
 
-
-    def index(self,index):
+    def index(self, index):
         if self.is_empty():
             return None
         if index >= self.length():
@@ -43,7 +42,6 @@ class Student():
         for i in range(index):
             cur = cur.next
         return cur
-
 
     def append(self, item):
         node = Node(item)
@@ -114,9 +112,6 @@ class Student():
 #     print(sing_list.search("zero"))
 
 
-
-
-
 class Linkd():
     def __init__(self, node=None):
         self.__head = node
@@ -127,8 +122,42 @@ class Linkd():
     def is_empty(self):
         return self.__head == None
 
+    def length(self):
+        cur = self.__head
+        if not cur:
+            return 0
+        count = 1
+        while cur["next"] != None:
+            cur = cur["next"]
+            count += 1
+        return count
+
+    def swap(self, indexOne, indexTwo):
+        if indexOne < 0 or indexTwo < 0:
+            print("index out of range")
+            return ""
+        if indexOne >= self.length() or indexTwo >= self.length():
+            print("index out of range")
+            return ""
+        if indexOne == indexTwo or self.is_empty() or self.length() == 1:
+            pass
+        else:
+            if self.length() == 2:
+                self.reverse()
+            else:
+                indexOne_data = self.index(indexOne)
+                indexTwo_data = self.index(indexTwo)
+                cur = self.__head
+                for i in range(max(indexOne, indexTwo) + 1):
+                    print(i)
+                    if i == indexOne:
+                        cur["data"] = indexTwo_data
+                    if i == indexTwo:
+                        cur["data"] = indexOne_data
+                    cur = cur["next"]
+
     def add(self, item):
-        node = {"data":item, "next": None}
+        node = {"data": item, "next": None}
         node["next"] = self.__head
         self.__head = node
 
@@ -143,7 +172,7 @@ class Linkd():
                 cur = cur["next"]
             cur["next"] = node
 
-    def index(self,index):
+    def index(self, index):
         if self.is_empty():
             return None
         if index >= self.length():
@@ -151,7 +180,7 @@ class Linkd():
         if index == 0:
             return self.__head["data"]
         cur = self.__head
-        for i in range(index):
+        for _ in range(index):
             cur = cur["next"]
         return cur["data"]
 
@@ -162,17 +191,6 @@ class Linkd():
             while cur["next"] != None:
                 cur = cur["next"]
                 print(cur["data"], end="\n")
-
-    def length(self):
-        cur = self.__head
-        if not cur:
-            return 0
-        count = 1
-        while cur["next"] != None:
-            cur = cur["next"]
-            count += 1
-        return count
-
 
     def insert(self, pos, item):
         count = 1
@@ -209,7 +227,7 @@ class Linkd():
         else:
             while cur["next"]:
                 cur = cur["next"]
-                if cur["data"] ==item:
+                if cur["data"] == item:
                     return True
             return False
 
@@ -225,11 +243,14 @@ class Linkd():
             cur["next"] = pre
             self.__head = cur
 
+
 link = Linkd()
 # print(link.is_empty())
 # link.append(9)
 link.add(8)
 link.add(7)
+link.add(3)
+link.add(1)
 # link.insert(2, 6)
 # link.insert(2, 1)
 # link.remove(7)
@@ -240,6 +261,8 @@ link.add(7)
 # link.travel()
 # link.reverse()
 # link.travel()
-print("*", link.index(1))
-print("**", link.index(0))
+print(link.index(1))
+print(link.index(0))
+link.showSelf()
+link.swap(1, 3)
 link.showSelf()
