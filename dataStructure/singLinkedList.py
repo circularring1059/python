@@ -31,6 +31,20 @@ class Student():
         node.next = self.__head
         self.__head = node
 
+
+    def index(self,index):
+        if self.is_empty():
+            return None
+        if index >= self.length():
+            return "out of index"
+        if index == 0:
+            return self.__head
+        cur = self.__head
+        for i in range(index):
+            cur = cur.next
+        return cur
+
+
     def append(self, item):
         node = Node(item)
         if self.is_empty():
@@ -107,6 +121,9 @@ class Linkd():
     def __init__(self, node=None):
         self.__head = node
 
+    def showSelf(self):
+        print(self.__head)
+
     def is_empty(self):
         return self.__head == None
 
@@ -125,6 +142,18 @@ class Linkd():
             while cur["next"] != None:
                 cur = cur["next"]
             cur["next"] = node
+
+    def index(self,index):
+        if self.is_empty():
+            return None
+        if index >= self.length():
+            return "out of index"
+        if index == 0:
+            return self.__head["data"]
+        cur = self.__head
+        for i in range(index):
+            cur = cur["next"]
+        return cur["data"]
 
     def travel(self):
         cur = self.__head
@@ -200,6 +229,7 @@ link = Linkd()
 # print(link.is_empty())
 # link.append(9)
 link.add(8)
+link.add(7)
 # link.insert(2, 6)
 # link.insert(2, 1)
 # link.remove(7)
@@ -207,6 +237,9 @@ link.add(8)
 # print("length:", link.length())
 # print(link.search(8))
 # print(link.is_empty())
-link.travel()
-link.reverse()
-link.travel()
+# link.travel()
+# link.reverse()
+# link.travel()
+print("*", link.index(1))
+print("**", link.index(0))
+link.showSelf()
