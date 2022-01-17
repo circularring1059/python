@@ -12,31 +12,29 @@ def lengthOfLongSubstring(str):
     return max_len
 
 
-print(lengthOfLongSubstring("abcabcbb"))
+# print(lengthOfLongSubstring("abcabcbb"))
 
 
 def lengthOfLongSubstring1(str):
-    max_len = 0
     dict1 = {}
-    start = 0
+    start,max_len= 0, 0
     for i in range(len(str)):
         if str[i] not in dict1:
             dict1[str[i]] = i
         else:
-            max_len = max(max_len, i - start)
-            if dict1[str[i]] > start:
-                dict1[str[i]] = i
-                start = i
-            else:
+            if dict1[str[i]] >= start:
+                max_len = max(max_len, i - start)
                 start = dict1[str[i]] + 1
                 dict1[str[i]] = i
-
+            else:
+                dict1[str[i]] = i
     max_len = max(max_len, len(str) - start)
 
     return max_len
 
 
-print(lengthOfLongSubstring1("abcgepwpenwegnbwrwenpwepqsvdgdg"))
+print(lengthOfLongSubstring1("ohvhjdml"))
+print(lengthOfLongSubstring1("pwwkew"))
 
 
 def lengthOfLongSubstring2(str):
@@ -48,14 +46,13 @@ def lengthOfLongSubstring2(str):
             if str[j] not in dict1:
                 dict1[str[j]] = j
             else:
-                max_len = max(j - i, max_len)
+                max_len = max(j - i , max_len)
                 flag = True
                 break
         if not flag:
             max_len = max(max_len, len(str) - i)
             break
-
     return max_len
 
 
-print(lengthOfLongSubstring2("abcgepwpenwegnbwrwenpwepqsvdgdg"))
+# print(lengthOfLongSubstring2("aab"))
