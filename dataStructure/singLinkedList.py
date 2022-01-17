@@ -254,7 +254,6 @@ class Linkd():
                 return newNode
         self.__head = inner(cur)
 
-
     def linkSort(self, reverse=False):
         if self.length() <= 1:
             pass
