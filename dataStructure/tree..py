@@ -80,6 +80,40 @@ class Tree():
         inner(cur)
         print()
 
+    def countOfNode(self):
+        cur = self.root
+        count = 0
+        def inner(cur):
+            if cur is None:
+                return
+            nonlocal count
+            count += 1
+            inner(cur.left)
+            inner(cur.right)
+
+        inner(cur)
+        return count
+    def kthSmallest(self, k):
+        cur = self.root
+        ret = []
+        def inner(cur):
+            if cur is None:
+                return
+            inner(cur.left)
+            ret.append(cur.elem)
+            inner(cur.right)
+
+        inner(cur)
+
+        if len(ret) < k or k < 1:
+            return None
+        return ret[k-1]
+
+
+
+
+
+
 
 tree_instance = Tree()
 
@@ -90,3 +124,5 @@ tree_instance.breadth_travel()
 tree_instance.preorder()
 tree_instance.inorder()
 tree_instance.afterorder()
+# print(tree_instance.countOfNode())
+print(tree_instance.kthSmallest(1))
