@@ -242,6 +242,18 @@ class Linkd():
             cur["next"] = pre
             self.__head = cur
 
+    def reverse1(self):
+        cur = self.__head
+        def inner(node):
+            if node["next"] == None:
+                return node
+            else:
+                newNode = inner(node["next"])
+                node["next"]["next"] = node
+                node["next"] = None
+                return newNode
+        self.__head = inner(cur)
+
     def linkSort(self, reverse=False):
         if self.length() <= 1:
             pass
@@ -270,6 +282,9 @@ link.add(7)
 link.add(3)
 link.add(1)
 link.add(19)
+link.travel()
+link.reverse1()
+link.travel()
 # link.insert(2, 6)
 # link.insert(2, 1)
 # link.remove(7)
