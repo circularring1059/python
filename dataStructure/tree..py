@@ -6,7 +6,7 @@ class Node():
 
 
 class Tree():
-    def __init__(self, root=Node):
+    def __init__(self, root=None):
         self.root = root
 
     def add(self, elem):
@@ -21,9 +21,9 @@ class Tree():
                 if cur.left == None:
                     cur.left = node
                     return
-                elif cur.right == None:
-                    cur.right = node
-                    return
                 else:
                     queue.append(cur.left)
+                if cur.right is None:
+                    cur.right = node
+                else:
                     queue.append(cur.right)
