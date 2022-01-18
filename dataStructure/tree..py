@@ -1,5 +1,5 @@
 class Node():
-    def __str__(self,elem=-1, left=None, right=None):
+    def __init__(self, elem=-1, left=None, right=None):
         self.elem = elem
         self.left = left
         self.right = right
@@ -11,19 +11,82 @@ class Tree():
 
     def add(self, elem):
         node = Node(elem)
-        if self.root:
+        if self.root is None:
             self.root = node
         else:
             queue = []
             queue.append(self.root)
             while queue:
                 cur = queue.pop(0)
-                if cur.left == None:
+                if cur.left is None:
                     cur.left = node
                     return
                 else:
                     queue.append(cur.left)
                 if cur.right is None:
                     cur.right = node
+                    return
                 else:
                     queue.append(cur.right)
+
+    def breadth_travel(self):
+        """层序遍历"""
+        if self.root is None:
+            return
+        queue = [self.root]
+        while queue:
+            cur = queue.pop(0)
+            # print("*")
+            print(cur.elem, end=" ")
+            if cur.left is not None:
+                queue.append(cur.left)
+            if cur.right is not None:
+                queue.append(cur.right)
+        print()
+
+    def preorder(self):
+        """先序遍历"""
+        cur = self.root
+        def inner(cur):
+            if cur is None:
+                return
+            print(cur.elem, end=" ")
+            inner(cur.left)
+            inner(cur.right)
+
+        inner(cur)
+        print()
+
+    def inorder(self):
+        """中序遍历，二叉搜索树就是按序输出了"""
+        cur = self.root
+        def inner(cur):
+            if cur is None:
+                return
+            inner(cur.left)
+            print(cur.elem, end=" ")
+            inner(cur.right)
+        inner(cur)
+        print()
+
+    def afterorder(self):
+        cur = self.root
+        def inner(cur):
+            if cur is None:
+                return
+            inner(cur.left)
+            inner(cur.right)
+            print(cur.elem, end=" ")
+        inner(cur)
+        print()
+
+
+tree_instance = Tree()
+
+tree_instance.add(2)
+tree_instance.add(1)
+tree_instance.add(3)
+tree_instance.breadth_travel()
+tree_instance.preorder()
+tree_instance.inorder()
+tree_instance.afterorder()
