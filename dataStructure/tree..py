@@ -44,6 +44,52 @@ class Tree():
                 queue.append(cur.right)
         print()
 
+    def breadth_travel1(self):
+        '''分层存储'''
+        if self.root is None:
+            return
+        queue = [self.root]
+        list1 = []
+        while queue:
+            list2 = []
+            for  _  in range(len(queue)):
+                cur = queue.pop(0)
+                if cur.left is not None:
+                    queue.append(cur.left)
+                if cur.right is not None:
+                    queue.append(cur.right)
+                list2.append(cur.elem)
+            list1.append(list2)
+        return list1
+
+    def breadth_travel2(self):
+        '''z 型打印'''
+        if  self.root is  None:
+            return
+        queue = [self.root]
+        list1 = []
+        len_queue = len(queue)
+        while queue:
+            list2 = []
+            i = 0
+            for _ in range(len(queue)):
+                cur = queue.pop(0)
+                if len_queue % 2 == 0:
+                    print("**")
+                    list2.append(cur.elem)
+                else:
+                    list2.insert(0,cur.elem)
+                if cur.left is not None:
+                    queue.append(cur.left)
+                if cur.right is not None:
+                    queue.append(cur.right)
+
+            list1.append(list2)
+
+        return list1
+
+
+
     def preorder(self):
         """先序遍历"""
         cur = self.root
@@ -120,9 +166,11 @@ tree_instance = Tree()
 tree_instance.add(2)
 tree_instance.add(1)
 tree_instance.add(3)
-tree_instance.breadth_travel()
-tree_instance.preorder()
-tree_instance.inorder()
-tree_instance.afterorder()
-# print(tree_instance.countOfNode())
-print(tree_instance.kthSmallest(1))
+# tree_instance.breadth_travel()
+# tree_instance.preorder()
+# tree_instance.inorder()
+# tree_instance.afterorder()
+# # print(tree_instance.countOfNode())
+# print(tree_instance.kthSmallest(1))
+print(tree_instance.breadth_travel1())
+print(tree_instance.breadth_travel2())
