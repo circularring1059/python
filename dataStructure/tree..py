@@ -68,13 +68,12 @@ class Tree():
             return
         queue = [self.root]
         list1 = []
-        len_queue = len(queue)
+        i = 0
         while queue:
             list2 = []
-            i = 0
             for _ in range(len(queue)):
                 cur = queue.pop(0)
-                if len_queue % 2 == 0:
+                if i % 2 == 0:
                     print("**")
                     list2.append(cur.elem)
                 else:
@@ -85,6 +84,7 @@ class Tree():
                     queue.append(cur.right)
 
             list1.append(list2)
+            i += 1
 
         return list1
 
@@ -166,6 +166,8 @@ tree_instance = Tree()
 tree_instance.add(2)
 tree_instance.add(1)
 tree_instance.add(3)
+tree_instance.add(4)
+tree_instance.add(5)
 # tree_instance.breadth_travel()
 # tree_instance.preorder()
 # tree_instance.inorder()
