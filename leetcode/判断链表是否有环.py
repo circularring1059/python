@@ -1,7 +1,16 @@
 class Node():
+    _instance = None
+
+
     def __init__(self,elem=None, node=None):
         self.elem = elem
         self.node = node
+
+    @classmethod
+    def instance(cls, *args, **kwargs):
+        if not hasattr(Node, "_instance"):
+            Node._instance = Node(*args, **kwargs)
+        return Node._instance
 
 def isLoop(node):
     if node is None or node.node is None:
@@ -11,7 +20,8 @@ def isLoop(node):
     while fast is not None and fast.node is not None:
         slow = slow.node
         fast = fast.node.node
-        if slow == fast:
+        if slow == fast or slow == fast.node:
+            print(slow.elem)
             return True
 
     return False
@@ -32,5 +42,5 @@ node1 = Node(1,)
 node2 = Node(2,node1)
 node3 = Node(3, node2)
 node4 = Node(4, node3)
-node1 = Node(1, node2)  #有环
+node1.node = node3  #有环
 print(isLoop(node4))
