@@ -20,8 +20,11 @@ def isLoop(node):
     while fast is not None and fast.node is not None:
         slow = slow.node
         fast = fast.node.node
-        if slow == fast or slow == fast.node or slow.node == fast:
+        if fast is None:
+            return False
+        if slow == fast or slow == fast.node :
             return True
+
 
     return False
 
@@ -41,5 +44,5 @@ node1 = Node(1,)
 node2 = Node(2,node1)
 node3 = Node(3, node2)
 node4 = Node(4, node3)
-node1.node = node3  #有环
+# node1.node = node3  #有环
 print(isLoop(node4))
