@@ -27,3 +27,22 @@ class LRU():
         node.next = self.tail
         self.tail.prev.next = node
         self.tail.prev = node
+
+    def get(self, key: int) -> int:
+        if key in self.hasmap:
+            self.move_node_to_tail(key)
+            return self.hasmap[key].value
+        else:
+            return -1
+
+    def put(self, key:int, value: int) -> None:
+        if key in self.hasmap:
+            self.hasmap.pop(self.head.next.key)
+            self.head.next = self.head.next.next
+            self.head.next.prev = self.head
+        new = Node(key, value)
+        self.hasmap[key] = new
+        new.prev = self.tail.prev
+        new.next = self.tail
+        self.tail.prev.next = new
+        self.tail.prev = new
