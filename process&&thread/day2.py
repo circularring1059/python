@@ -4,7 +4,7 @@ import os
 
 def task1(arg):
     while True:
-        sleep(1)
+        sleep(4)
         print("this is task1","arg is {}".format(arg))
 
 def task2(arg):
