@@ -5,12 +5,12 @@ from time import sleep
 
 def task1():
     while True:
-        sleep(1)
+        sleep(5)
         print("this is task1", "pid:",os.getpid(), "ppid:",os.getppid())
 
 def task2():
     while True:
-        sleep(2)
+        sleep(5)
         print("this is task2", "pid:", os.getpid(), "ppid:", os.getppid())
 
 
@@ -29,5 +29,6 @@ if __name__ == '__main__':
     process2.start()
 
     print("The parent process")
+    print("父进程不会退出，在wait 子进程")
 
 #非进程池创建，即使主进程退出了，子进程依然继续运行
