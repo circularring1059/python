@@ -25,3 +25,17 @@ class ChooseSort():
 
 choose = ChooseSort()
 print(choose.choose_sort([2,4,1,8,3]))
+
+def Solution(nums):
+    if len(nums) <= 1:
+        return nums
+    for i in range(len(nums)):
+        middle_index = i
+        for j in range(i, len(nums)):
+            if nums[j] > nums[middle_index]:
+                middle_index = j
+        #把大的放前面
+        nums[i], nums[middle_index] = nums[middle_index], nums[i]
+    return  nums
+
+print(Solution([3,5,1,8,0,19]))
