@@ -24,4 +24,4 @@ def str_sort(array):
                 array[j], array[j + 1] = array[j + 1], array[j]
     return array
 
-print(str_sort(["a", "b", "fg"]))
+print(str_sort(["a", "b", "fg",  "fa"]))
