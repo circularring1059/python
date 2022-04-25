@@ -1,6 +1,6 @@
 def solution(intervals):
 
-    if not intervals or not intervals[0]:
+    if not intervals:
         return intervals
 
     #按做区间排序
@@ -51,3 +51,25 @@ class Solution():
 
 # solution_ins = Solution([[1,2], [4,6], [3,9]])
 # print(solution_ins.solution())
+
+def mergeInterval(interval):
+    if len(interval) <= 1:
+        return interval
+
+    ret = []
+    #排序
+    interval = sorted(interval, key = lambda x: x[0])
+    start, end  = interval[0][0], interval[0][1]
+    for i in range(1, len(interval)):
+        left_point, right_point = interval[i][0], interval[i][1]
+        if end >= left_point:
+            #合并
+            end = max(end, right_point)
+        else:
+            ret.append([start, end])
+            strt, end = left_point, right_point
+    ret.append([start, end])
+    return ret
+
+print(mergeInterval([[8,10], [6,9]]))
+

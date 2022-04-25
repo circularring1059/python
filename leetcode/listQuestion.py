@@ -31,3 +31,17 @@ def func(arrary):
     return(res)
 
 print(func([1, 2, 3]))
+
+
+def Solution(nums):
+    if len(nums) <= 1:
+        return nums
+    ret = []
+    ret.append(nums)
+    for i in range(len(nums)-1):
+        tmp_list = copy.deepcopy(ret[i])
+        #替换顺序
+        tmp_list.append(tmp_list.pop(0))
+        ret.append(tmp_list)
+    return ret
+print(Solution([1,2,3]))
