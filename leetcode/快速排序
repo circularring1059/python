@@ -1,0 +1,11 @@
+def Solution(nums):
+    if len(nums) <= 1:
+        return nums
+
+    middle = nums[0]
+    left = [nums[i] for i in range(1,len(nums)) if nums[i] <= middle ]
+    right = [nums[i] for i in range(1,len(nums)) if nums[i] > middle ]
+
+    return Solution(left) + [middle] + Solution(right)
+
+print(Solution([2,4,1,10,7,18,2]))
