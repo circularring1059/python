@@ -63,7 +63,7 @@ def mergeInterval(interval):
     for i in range(1, len(interval)):
         left_point, right_point = interval[i][0], interval[i][1]
         if end >= left_point:
-            #合并
+            #合并 扩大区间
             end = max(end, right_point)
         else:
             ret.append([start, end])
