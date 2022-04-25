@@ -17,3 +17,22 @@ class Solution():
 
 solution_ins = Solution()
 print(solution_ins.maxArea([1,2,3]))
+
+
+
+#盛水最多
+
+def Solutioin(nums):
+    left, right = 0, len(nums)-1
+    res = 0
+    while left < right:
+        if nums[left] > nums[right]:
+            res = max(res, nums[right] * (right-left))
+            right -= 1
+        else:
+            res = max(res, nums[left] * (right-left))
+            left += 1
+    return res
+
+print(Solutioin([1,2,3]))
+
