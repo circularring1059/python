@@ -69,7 +69,7 @@ def Solutinon(str):
                 max_len = max(max_len, i - start)
                 #指向下一个字符
                 start = dict_a[str[i]] + 1
-                #跟新 字符对应的可以
+                #跟新字符对应的位置
                 dict_a[str[i]] = i
             else:
                 # abcba 此时 start 指向c,再次出现a时并不需要停下去长度
