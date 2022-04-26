@@ -78,7 +78,7 @@ def Solution1(str):
         #         if not stack:
         #             max_len = max(max_len, i - index + 1)
         else:
-            #栈为空，即出现 "))"，直接pass
+            #栈为空时，即出现 "))"，直接pass
             if stack:
                 stack.pop()
                 if not stack:
@@ -88,6 +88,7 @@ def Solution1(str):
 
 print(Solution1("(((())))(()"))
 print(Solution1("()(())(("))
+print(Solution1("(("))
 
 
 

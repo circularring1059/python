@@ -56,3 +56,26 @@ def lengthOfLongSubstring2(str):
 
 
 # print(lengthOfLongSubstring2("aab"))
+
+def Solutinon(str):
+    dict_a = {}
+    max_len, start = 0, 0
+    for i in range(len(str)-1):
+        if str[i] not in dict_a:
+            dict_a[str[i]] = i
+        else:
+            if dict_a[str[i]] >= start:
+                #get length
+                max_len = max(max_len, i - start)
+                #指向下一个字符
+                start = dict_a[str[i]] + 1
+                #跟新 字符对应的可以
+                dict_a[str[i]] = i
+            else:
+                # abcba 此时 start 指向c,再次出现a时并不需要停下去长度
+                dict_a[str[i]] = i
+    return max(max_len, len(str)- start) #循环完后需要再取一次 "acadedfg"
+
+print(Solutinon("hello"))
+
+
