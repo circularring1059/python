@@ -9,7 +9,6 @@ def canJump(nums):
 
     #从第二点开始到倒数第个二点
     for i in range(1,len(nums)-1):
-        print(i)
         #先判断是否可以跳到该点
         if max_jump < i:
             return False
