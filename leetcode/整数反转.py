@@ -23,7 +23,7 @@ print(list_a)
 for i in tuple(list_a):
     print(i)
     if i == '0':
-        list_a.pop(0)
+        list_a
         print(list_a)
     else:
         break
