@@ -28,6 +28,24 @@ def Solution(node):
         return tmp_node
 
 
+def Solution1(node):
+    if not node.node:
+        return node
+
+    def backtack(node):
+        if not node.node:
+            return node
+        else:
+            newNode = backtack(node.node)
+            node.node.node = node
+            node.node = None
+        return newNode
+    node = backtack(node)
+    return node
+
+
+
+
 
 node1 = Node(1)
 node2 = Node(2)
@@ -40,8 +58,8 @@ node2.node = node3
 node3.node = node4
 node4.node = node5
 
-node1.travel()
-Solution(node1)
-node5.travel()
+# node1.travel()
+node_res = Solution1(node1)
+node_res.travel()
 
 
