@@ -33,6 +33,7 @@ def Solution1(node):
         return node
 
     def backtack(node):
+        #最后一个node就直接返回
         if not node.node:
             return node
         else:
@@ -58,8 +59,8 @@ node2.node = node3
 node3.node = node4
 node4.node = node5
 
-# node1.travel()
 node_res = Solution1(node1)
+node5.travel()
 node_res.travel()
 
 

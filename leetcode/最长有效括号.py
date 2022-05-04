@@ -27,7 +27,7 @@ def longestValidParentheses(arg):
     return max_len
 
 
-print(longestValidParentheses("(((())))(()"))
+# print(longestValidParentheses("(((())))(()"))
 
 
 def Solution(str):
@@ -47,8 +47,8 @@ def Solution(str):
                 stack = [0]
     return max_len
 
-print(Solution("()(())(("))
-print(Solution("(((())))(()"))
+# print(Solution("()(())(("))
+# print(Solution("(((())))(()"))
 
 # def Solution1(str):
 #     lens = len(str)
@@ -61,33 +61,21 @@ print(Solution("(((())))(()"))
 
 
 def Solution1(str):
-    stack = []
+    stack = [-1]
     max_len = 0
-    index = 0
-    for i in range(len(str)-1):
+    for i in range(len(str)):
         if str[i] == "(":
-            stack.append("(")
-            #记录起始位置
-            if not stack:
-                index = i
-        # else:
-        #     if not stack:
-        #         continue
-        #     else:
-        #         stack.pop()
-        #         if not stack:
-        #             max_len = max(max_len, i - index + 1)
+            stack.append(i)
         else:
-            #栈为空时，即出现 "))"，直接pass
-            if stack:
-                stack.pop()
-                if not stack:
-                    #出现空栈，求其长度
-                    max_len = max(max_len, i-index+1)
+            stack.pop()
+            if not stack:
+                stack.append(i)
+            else:
+                max_len = max((max_len, i-stack[-1]))
     return max_len
 
 print(Solution1("(((())))(()"))
-print(Solution1("()(())(("))
+print(Solution1("()(()))("))
 print(Solution1("(("))
 
 
