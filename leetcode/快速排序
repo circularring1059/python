@@ -9,3 +9,31 @@ def Solution(nums):
     return Solution(left) + [middle] + Solution(right)
 
 print(Solution([2,4,1,10,7,18,2]))
+
+
+
+def partition(nums, low, high):
+    i = low -1
+    pivot = nums[high]
+
+    for j in range(low, high):
+        if nums[j] <=  pivot:
+            i += 1
+            nums[i], nums[j] = nums[j], nums[i]
+    nums[i+1], nums[high] = nums[high], nums[i+1]
+    return i + 1
+
+def quickSort(nums, low, high):
+    if low < high:
+        pi = partition(nums, low, high)
+        quickSort(nums, low, pi-1)
+        quickSort(nums, pi+1, high)
+
+
+nums = [2,4,1,9,3,10,5]
+
+quickSort(nums,0, len(nums)-1)
+
+for i in nums:
+    print(i)
+
