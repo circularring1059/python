@@ -24,3 +24,15 @@ for i in dictB.items():
 dictA = {"one":1, "two":2}
 print(dictA.setdefault("three", 3))
 print(dictA)
+
+print(list(set([1,2,3,4,3])))
+
+
+listC = [1,3,3,4,5]
+print(listC[-1:0:-1])
+for i in range(len(listC)-1, -1, -1):
+    if listC[i] == 3:
+        # listC.pop(i)
+        listC.remove(listC[i])
+print(listC)
+
