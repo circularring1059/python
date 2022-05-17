@@ -84,3 +84,6 @@ print(dc9)
 
 del dc9 #删除整个字典对象
 # print(id(dc9)) 报错
+
+dict10 = {}.fromkeys(((1,0),0))
+print(dict10)

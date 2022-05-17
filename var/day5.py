@@ -23,7 +23,7 @@ li5 = list(li2)
 print(id(li2), id(li2)) #2936122528648 2936122528648
 
 li20 = li2[:]
-print(id(li20), id(li2))
+print(id(li20), id(li2)) #2038678791552 2038677457792
 print('*****')
 #copy 浅拷贝
 li6 = li2.copy()

@@ -2,7 +2,7 @@
 str1 = "hello"
 str2 = "World"
 print(str1+str2)  #helloWorld  拼接
-print(str1,str2, sep="")
+print(str1,str2, sep="", end="***")
 print("{}{}".format(str1, str2))
 
 print('''*

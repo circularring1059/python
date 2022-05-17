@@ -13,3 +13,5 @@ b = 1
 print(float(b)) #1.0
 del b  #删除 b引用
 # print(b)  报错 name 'b' is not defined
+# del c  NameError: name 'c' is not defined
+# print(c)
