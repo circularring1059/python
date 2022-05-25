@@ -18,8 +18,8 @@ class Binaryfind():
         return False
 
     def binary_find1(self, array, target):
-        if len(array) <= 1:
-            return array
+        # if len(array) <= 1:
+        #     return array
         left, right = 0, len(array)-1
         while left <= right:
             mid = (right+left) // 2

@@ -17,3 +17,9 @@ listF = reduce(lambda x, y: x if y in x else x +[y], [[],] + listH)
 x = reduce(lambda x, y: x+y, listH)
 print(list(listF))
 print(x)
+
+
+a = [ i % 2 for i in range(10)]
+b =  ( i % 2 for i in range(10) )
+print(a, b)
+print(int(9 / 2))
