@@ -9,7 +9,7 @@ print(eval("add(2,3)"))
 def func(x,y, *args, **kwargs):
     return x, y, args, kwargs
 
-print(func(1,3,3,4,a=1,b=2)) #(1, (3, 4, 3, 4), {'a': 1, 'b': 2})
+print("*", func(1,3,3,4,a=1,b=2)) #* (1, 3, (3, 4), {'a': 1, 'b': 2})
 
 def func(x,y=5, *args, **kwargs):
     return x, y, args, kwargs

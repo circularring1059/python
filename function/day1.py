@@ -29,3 +29,4 @@ def line_conf(a, b):
 line1 = line_conf(1, 1)
 line2 = line_conf(4, 5)
 print(line1(5), line2(5))
+print(line1(5))

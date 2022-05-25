@@ -1,5 +1,4 @@
 #if
-
 a = ""
 if not a:
     print("这是一个空字符串")
