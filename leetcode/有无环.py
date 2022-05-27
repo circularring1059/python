@@ -4,9 +4,12 @@ def isRing(node):
 
     one_node = node
     two_node = node
-    while one_node.node is not None and two_node.node is not None:
+    while two_node.node is not None:
         one_node = one_node.node
         two_node = two_node.node.node
+
+        if two_node is None:
+            return False
         if two_node == one_node or two_node.node == one_node:
             return True
     return False

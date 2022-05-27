@@ -11,5 +11,7 @@ class E:
 class D(B, C,E):
     pass
 
-print(D.__mro__)
-print(D().method())  #(<class '__main__.D'>, <class '__main__.B'>, <class '__main__.C'>, <class '__main__.A'>, <class '__main__.E'>, <class 'object'>)
+# print(D.__mro__)  #(<class '__main__.D'>, <class '__main__.B'>, <class '__main__.C'>, <class '__main__.A'>, <class '__main__.E'>, <class 'object'>)
+d = D()
+d.method()  #commonB CommonC
+# print(D().method())
