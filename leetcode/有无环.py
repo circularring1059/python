@@ -34,3 +34,18 @@ print(isRing(node1))
 # node3.node = node3
 node2.node = node1
 print(isRing(node1))
+
+
+def entrypointRing(node):
+    listNode = []
+    while node:
+        if node.node not in listNode:
+            listNode.append(node.node)
+            node = node
+        else:
+            print(node.node.value)
+            break
+
+
+
+entrypointRing(node1)
