@@ -17,7 +17,7 @@ def isLoop(node):
         return False
     slow = node
     fast = node
-    while fast is not None and fast.node is not None:
+    while fast.node is not None:
         slow = slow.node
         fast = fast.node.node
         if fast is None:

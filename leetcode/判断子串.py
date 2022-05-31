@@ -53,7 +53,7 @@ def is_substr(str1, str2):
 
     return False
 
-print(is_substr('yu', "yu"))
+print(is_substr('yu', "jyukk"))
 
 # def is_substr(str1, str2):
 #     i, j = 0, 0
