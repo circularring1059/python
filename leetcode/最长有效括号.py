@@ -77,8 +77,22 @@ def Solution1(str):
 
 print(Solution1("(((())))(()"))
 print(Solution1("(()(())("))
-print(Solution1("()))))()()"))
+print(Solution1("((()))"))
 
 
 
+def Soultion2(nums):
+    res = []
+    for i in nums:
+        flag = True
+        for j in res:
+            if j[0].get("k1") == i.get("k1"):
+                j.append(i)
+                flag = False
+                break
+        if  flag:
+            res.append([i])
+    return res
 
+listA = [{"k1":1, "k2":2}, {"k1":2, "k2":2}, {"k1":1, "k2":3}]
+print(Soultion2(listA))
